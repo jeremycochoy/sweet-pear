@@ -1,4 +1,4 @@
-name = "sweet-pear"
+name = "sweetpear"
 
 # This package add .map to types list and tuple.
 from forbiddenfruit import curse
