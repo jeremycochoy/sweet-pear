@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="sweet-pear",
-    version="0.0.4",
+    version="0.0.5",
     author="Jeremy Cochoy",
     author_email="jeremy.cochoy@gmail.com",
     description="Add basic functional methods to standard types",
@@ -18,5 +18,5 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    install_requires=["forbiddenfruit"],
+    install_requires=["forbiddenfruit", "cytoolz"],
 )
