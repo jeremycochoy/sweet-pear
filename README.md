@@ -44,10 +44,13 @@ Here is the list of the available functions:
 [].drop
 [].take
 [].firt
+[].second
 [].concat
 [].flatten
 [].count
 [].groupby
+[].filter
+[].reject
 ```
 
 For more information on a specific method, just type

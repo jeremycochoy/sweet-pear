@@ -52,6 +52,56 @@ def __curse_take_gen(selected_type):
     return __curse_take
 
 
+def __curse_filter_gen(selected_type):
+    def __curse_filter(self, fct):
+        """
+        Return those items of sequence for which predicate(item) is True
+
+        >>> def iseven(x):
+        ...     return x % 2 == 0
+        >>> [1, 2, 3, 4].filter(iseven)
+        [2, 4]
+
+        """
+        return selected_type(cytoolz.remove(lambda x: not fct(x), self))
+    return __curse_filter
+
+
+def __curse_reject_gen(selected_type):
+    def __curse_reject(self, fct):
+        """
+        Return those items of sequence for which predicate(item) is False
+
+        >>> def iseven(x):
+        ...     return x % 2 == 0
+        >>> [1, 2, 3, 4].filter(iseven)
+        [1, 3]
+
+        """
+        return selected_type(cytoolz.remove(fct, self))
+    return __curse_reject
+
+
+def __curse_unique_gen(selected_type):
+    def __curse_unique(self, key=None):
+        """
+        Return only unique elements of a sequence
+
+        >>> (1, 2, 3).unique()
+        (1, 2, 3)
+        >>> (1, 2, 1, 3).unique()
+        (1, 2, 3)
+
+        Uniqueness can be defined by key keyword
+
+        >>> ['cat', 'mouse', 'dog', 'hen'].unique(key=len)
+        ('cat', 'mouse')
+
+        """
+        return selected_type(cytoolz.unique(self, key=key))
+    return __curse_unique
+
+
 def __curse_concat_gen(selected_type):
     def __curse_concat(self):
         """
@@ -88,3 +138,6 @@ for stype in [list, range, tuple, str]:
     curse(stype, "take", __curse_take_gen(__to_gen(stype)))
     curse(stype, "drop", __curse_drop_gen(__to_gen(stype)))
     curse(stype, "concat", __curse_concat_gen(__to_gen(stype)))
+    curse(stype, "unique", __curse_unique_gen(__to_gen(stype)))
+    curse(stype, "filter", __curse_filter_gen(__to_gen(stype)))
+    curse(stype, "reject", __curse_reject_gen(__to_gen(stype)))

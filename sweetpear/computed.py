@@ -40,10 +40,23 @@ def __curse_first(self):
     return cytoolz.first(self)
 
 
+def __curse_second(self):
+    """
+    Help on cython_function_or_method in module cytoolz.itertoolz:
+
+    The second element in a sequence
+
+    >>> (1, 2, 3).second()
+    2
+    """
+    return cytoolz.second(self)
+
+
 for stype in [list, range, tuple, str, dict]:
     curse(stype, "count", __curse_count)
     curse(stype, "groupby", __curse_groupby)
     curse(stype, "first", __curse_first)
+    curse(stype, "second", __curse_second)
 
 
 def __curse_list_flatten(self):
