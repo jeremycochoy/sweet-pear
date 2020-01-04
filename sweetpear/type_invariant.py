@@ -52,20 +52,6 @@ def __curse_take_gen(selected_type):
     return __curse_take
 
 
-def __curse_first_gen(selected_type):
-    def __curse_first(self):
-        """
-        Help on cython_function_or_method in module cytoolz.itertoolz:
-
-        The first element in a sequence
-
-        >>> 'ABC'.first()
-        'A'
-        """
-        return selected_type(cytoolz.first(self))
-    return __curse_first
-
-
 def __curse_concat_gen(selected_type):
     def __curse_concat(self):
         """
@@ -101,5 +87,4 @@ for stype in [list, range, tuple, str]:
     curse(stype, "tail", __curse_tail_gen(__to_gen(stype)))
     curse(stype, "take", __curse_take_gen(__to_gen(stype)))
     curse(stype, "drop", __curse_drop_gen(__to_gen(stype)))
-    curse(stype, "first", __curse_first_gen(__to_gen(stype)))
     curse(stype, "concat", __curse_concat_gen(__to_gen(stype)))

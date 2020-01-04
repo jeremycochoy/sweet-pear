@@ -28,9 +28,22 @@ def __curse_groupby(self, fct):
     return cytoolz.groupby(fct, self)
 
 
+def __curse_first(self):
+    """
+    Help on cython_function_or_method in module cytoolz.itertoolz:
+
+    The first element in a sequence
+
+    >>> 'ABC'.first()
+    'A'
+    """
+    return cytoolz.first(self)
+
+
 for stype in [list, range, tuple, str, dict]:
     curse(stype, "count", __curse_count)
     curse(stype, "groupby", __curse_groupby)
+    curse(stype, "first", __curse_first)
 
 
 def __curse_list_flatten(self):
